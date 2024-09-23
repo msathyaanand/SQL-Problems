@@ -8,3 +8,14 @@ FROM Person
 GROUP BY email
 HAVING COUNT(email) > 1
 ```
+
+Solution 2:
+```
+SELECT DISTINCT email as Email
+FROM Person
+WHERE email IN (
+    SELECT email FROM Person
+    GROUP BY email
+    HAVING COUNT(email) > 1
+)
+```
