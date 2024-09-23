@@ -19,3 +19,16 @@ WHERE email IN (
     HAVING COUNT(email) > 1
 )
 ```
+
+Solution 3:
+```
+WITH DUP AS (
+    SELECT MIN(id) AS MINID FROM Person 
+    GROUP BY email
+)
+
+DELETE FROM Person
+WHERE id not in (
+    SELECT MINID FROM DUP
+)
+```
