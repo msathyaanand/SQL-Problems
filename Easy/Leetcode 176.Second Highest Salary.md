@@ -2,7 +2,7 @@
 ![image](https://github.com/user-attachments/assets/9ed2edf4-3a12-4b83-9083-328df4196433)
 
 Solution:
-```
+```sql
 SELECT MAX(salary) AS SecongHighestSalary
 FROM Employee
 WHERE salary < (SELECT MAX(salary) IN Employee)
